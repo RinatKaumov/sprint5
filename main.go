@@ -116,7 +116,7 @@ type Walking struct {
 
 // Calories возвращает количество потраченных калорий при ходьбе.
 func (w Walking) Calories() float64 {
-	if w.Height == 0 {
+	if w.Height == 0 || w.Duration.Hours() == 0 {
 		return 0 // возвращаем 0, если рост не указан, чтобы избежать деления на ноль
 	}
 	speedMs := w.meanSpeed() * KmHInMsec
